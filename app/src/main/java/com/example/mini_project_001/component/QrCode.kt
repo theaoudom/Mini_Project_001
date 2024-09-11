@@ -26,6 +26,7 @@ import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.QRCodeWriter
 import com.example.mini_project_001.R
+import com.example.mini_project_001.model.QRCodeData
 
 // Function for generate QR Code
 fun generateQrCode(text:String, size:Int): Bitmap? {
@@ -61,7 +62,7 @@ fun QRImage(bitmap : Bitmap){
                 .border(BorderStroke(3.dp, androidx.compose.ui.graphics.Color.White), CircleShape)
                 .clip(CircleShape)
                 .background(androidx.compose.ui.graphics.Color.Black)
-                .padding(14.dp)
+                .padding(16.dp)
         ) {
             Box(modifier = Modifier.padding(vertical = 2.dp)){
                 Image(
@@ -78,13 +79,11 @@ fun QRImage(bitmap : Bitmap){
 
 // Connect Image of QRCode with Link
 
-@Preview
 @Composable
-fun PreviewQRCode(){
-    val decodeFromQR = "00020101021129370009khqr@aclb011008847745150206ACLEDA392000118551414649701014520420005802KH53038405910Thea Oudom6010Phnom Penh62140210088477451563040CA7"
+fun PreviewQRCode(qrCodeData: QRCodeData){
     MaterialTheme {
         Surface{
-            val qrBitmap = generateQrCode(decodeFromQR, 712)
+            val qrBitmap = generateQrCode(qrCodeData.qrEndCode, 712)
             qrBitmap?.let { QRImage(it) }
         }
     }

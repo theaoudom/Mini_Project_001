@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mini_project_001</string>
+    <string name="hello">សួស្តី</string>
+    <string name="view_profile">មើលប្រវត្តិរូប</string>
+    <string name="saving">ការសន្សំ</string>
+    <string name="receive_money">ទទួលប្រាក់</string>
+    <string name="send_money">ផ្ញើរលុយ</string>
+    <string name="account">គណនី</string>
+    <string name="pay_bill">បង់វិក្កយបត្រ</string>
+    <string name="transfer">ផ្ទេរប្រាក់</string>
+    <string name="favorite">ចំណូលចិត្ត</string>
+    <string name="aba_scan">ABA Scan</string>
+    <string name="service">សេវាកម្ម</string>
+</resources>

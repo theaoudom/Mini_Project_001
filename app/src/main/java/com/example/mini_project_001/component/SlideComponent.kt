@@ -19,7 +19,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.Text
 import com.example.mini_project_001.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -32,12 +31,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
 
 @OptIn(ExperimentalFoundationApi::class)
 @Preview
 @Composable
 fun Slide(){
+    // Item Image for Slide
     val item = listOf(
         R.drawable.slide_1,
         R.drawable.slide2,
@@ -47,30 +46,37 @@ fun Slide(){
     val pageState = rememberPagerState {item.size}
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxSize()){
-            HorizontalPager(
-                state = pageState,
-                pageSize = PageSize.Fill,
-                pageSpacing = 8.dp,
-                modifier = Modifier.fillMaxSize()) { page ->
-                CardComponent(item[page])
-            }
-        }
-        Box(modifier = Modifier.fillMaxWidth().fillMaxHeight(0.8f)){
-            Row(modifier = Modifier.fillMaxSize(), verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.Center) {
-                repeat(pageState.pageCount) { iteration ->
-                    val color = if (pageState.currentPage == iteration) Color.LightGray else Color.DarkGray
-                    Box(
-                        modifier = Modifier
-                            .padding(2.dp)
-                            .clip(CircleShape)
-                            .background(color)
-                            .size(8.dp)
-                    )
+        Box{
+            Box(modifier = Modifier.fillMaxSize()){
+                HorizontalPager(
+                    state = pageState,
+                    pageSize = PageSize.Fill,
+                    pageSpacing = 8.dp,
+                    modifier = Modifier.fillMaxSize()) { page ->
+                    CardComponent(item[page])
                 }
             }
-
+            Box(
+                modifier = Modifier.fillMaxWidth().height(120.dp)
+            ){
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalAlignment = Alignment.Bottom,
+                    horizontalArrangement = Arrangement.Center) {
+                    repeat(pageState.pageCount) { iteration ->
+                        val color = if (pageState.currentPage == iteration) Color.White else Color.DarkGray
+                        Box(
+                            modifier = Modifier
+                                .padding(4.dp)
+                                .clip(CircleShape)
+                                .background(color)
+                                .size(8.dp)
+                        )
+                    }
+                }
+            }
         }
+
     }
 
     LaunchedEffect(pageState) {
@@ -81,7 +87,7 @@ fun Slide(){
         }
     }
 }
-
+// Create Card Template for slide
 @Composable
 fun CardComponent(index: Int){
     Card (
